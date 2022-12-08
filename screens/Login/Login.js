@@ -39,14 +39,14 @@ const Login = () => {
                     setValue={setPassword} 
                     secureTextEntry
                     />  
-
-                <CustomButton 
-                    text='Esqueceu a sua senha?' 
-                    onPress= {onForgotPasswordPressed} 
-                    type= 'TERTIARY'
-                    fgColor= '#fff'
-                />  
-
+                <View style={{alignItems: 'flex-end', minWidth: '100%'}}>
+                    <CustomButton 
+                        text='Esqueceu a sua senha?' 
+                        onPress= {onForgotPasswordPressed} 
+                        type= 'TERTIARY'
+                        fgColor= '#fff'
+                    />  
+                </View>
                 <CustomButton 
                     ftWeight= 'bold'
                     text='Submit' 
