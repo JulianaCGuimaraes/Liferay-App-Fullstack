@@ -1,1 +1,1 @@
-export { default } from './Botoes';
+export { default } from './Historico';

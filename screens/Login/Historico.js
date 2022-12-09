@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const Botoes = () => { 
+const Historico = () => { 
 
 
     const onSignInPressed = () => {
@@ -23,18 +23,18 @@ const Botoes = () => {
     return(
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.containerLogo}>
-                    <Text style={styles.titulo}>Formulários </Text>
+                    <Text style={styles.titulo}>Histórico  </Text>
                 <View style={{alignItems: 'flex-end', minWidth: '100%'}}> 
                 </View>
                 <CustomButton 
                     ftWeight= 'bold'
-                    text='Formulário de Doações' 
+                    text='Histórico de Doações' 
                     onPress= {onSignInPressed} 
                     bgColor= '#0d6efd'
                 /> 
                 <CustomButton 
                     ftWeight= 'bold'
-                    text='Formulário de Atividades' 
+                    text='Histórico de Atividades' 
                     onPress= {onSignInPressed2} 
                     bgColor= '#0d6efd'
                 /> 
@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     titulo: {
         color: '#0d6efd',
         fontSize: '25px',
-        fontWeight: 50,
+        fontWeight: 60,
         paddingHorizontal: 50 ,
         marginBottom: 50
     }
 });
 
-export default Botoes;
+export default Historico;
