@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const Historico = () => { 
+const Principal = () => { 
 
 
     const onSignInPressed = () => {
@@ -23,23 +23,10 @@ const Historico = () => {
     return(
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.containerLogo}>
-                    <Text style={styles.titulo}>Histórico  </Text>
+          <Image style = {styles.avatar} source = {require('../../assets/logo2.jpg')} />
                 <View style={{alignItems: 'flex-end', minWidth: '100%'}}> 
                 </View>
-                <CustomButton 
-                    ftWeight= 'bold'
-                    text='Histórico de Doações' 
-                    onPress= {onSignInPressed} 
-                    bgColor= '#0d6efd'
-                /> 
-                <CustomButton 
-                    ftWeight= 'bold'
-                    text='Histórico de Atividades' 
-                    onPress= {onSignInPressed2} 
-                    bgColor= '#0d6efd'
-                /> 
             </View>
-
         </ScrollView>
     );
 };
@@ -61,10 +48,10 @@ const styles = StyleSheet.create({
     titulo: {
         color: '#0d6efd',
         fontSize: '25px',
-        fontWeight: 60,
+        fontWeight: 80,
         paddingHorizontal: 50 ,
         marginBottom: 50
     }
 });
 
-export default Historico;
+export default Principal;

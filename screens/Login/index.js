@@ -1,1 +1,1 @@
-export { default } from './Historico';
+export { default } from './Principal';
