@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Login from './screens/Login';
+import Doacao from './screens/DoacoeScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.root}>
-      <Login />
+      <Doacao />
     </SafeAreaView>
   );
 };
