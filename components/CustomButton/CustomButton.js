@@ -1,9 +1,9 @@
-import { Text, StyleSheet, Pressable } from 'react-native'
+import { Text, StyleSheet, TouchableOpacity} from 'react-native'
 import React from 'react'
 
 const CustomButton = ({onPress, text, type= 'PRIMARY', bgColor, fgColor, ftWeight }) => {
   return (
-    <Pressable
+    <TouchableOpacity
         onPress={onPress}
         fontSize= 'bold'
         style={[
@@ -22,25 +22,26 @@ const CustomButton = ({onPress, text, type= 'PRIMARY', bgColor, fgColor, ftWeigh
         ]}>
         {text}
     </Text> 
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
-        width: '50%',
-        padding: 10,
-        marginVertical: 5,
+        height: '50%',
+        width: '100%',
+        padding: 15,
         alignItems: 'center',
-        borderRadius: 7,
+        justifyContent: 'center',
+        borderRadius: 10,
+        marginVertical: 30,
+        
     },
-
-    container_TERTIARY: {
-        backgroundColor: 'none',
-        justifyContent: 'right',
-        textDecorationLine: 'underline',
-        textDecorationColor: '#fff',
+    text:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 28,
+        textAlign: 'center',
     }
 })
 

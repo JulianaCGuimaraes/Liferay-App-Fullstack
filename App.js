@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Login from './screens/Login';
+import Atividade from './screens/AtividadeScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.root}>
-      <Login />
+      <Atividade />
     </SafeAreaView>
   );
 };
