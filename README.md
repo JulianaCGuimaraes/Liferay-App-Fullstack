@@ -1,6 +1,6 @@
 ﻿# Liferay-App-Fullstack
  
- This repository contains the fullstack Liferay app project for the Senac faculty mobile chair.
+ This repository contains the fullstack Liferay app project for the Senac college mobile chair.
 
  ## Technology Used
  ````
