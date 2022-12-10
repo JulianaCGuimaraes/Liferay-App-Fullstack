@@ -9,11 +9,11 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 
 const Atividade = () => { 
     const onSignInPressed = () => {
-        console.warn('Formulário de Atividades');
+        console.warn('FORMULÁRIO DE ATIVIDADES');
     }
 
     const onSignInPressed2 = () => {
-        console.warn('Histórico de Atividades');
+        console.warn('HISTÓRICO DE ATIVIDADES');
     }
 
     return(
@@ -23,14 +23,14 @@ const Atividade = () => {
                     <View style={styles.container}>
                         <CustomButton 
                             ftWeight= 'bold'
-                            text='Formulário de Atividades' 
+                            text='FORMULÁRIO DE ATIVIDADES' 
                             onPress= {onSignInPressed} 
                             bgColor= '#0B63CE'
                             fgColor= '#fff'
                         /> 
                          <CustomButton 
                             ftWeight= 'bold'
-                            text='Histórico de Atividades' 
+                            text='HISTÓRICO DE ATIVIDADES' 
                             onPress= {onSignInPressed2} 
                             bgColor= '#0B63CE'
                             fgColor= '#fff'
