@@ -1,9 +1,9 @@
-import { Text, StyleSheet, Pressable } from 'react-native'
+import { Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const CustomButton = ({onPress, text, type= 'PRIMARY', bgColor, fgColor, ftWeight }) => {
   return (
-    <Pressable
+    <TouchableOpacity
         onPress={onPress}
         fontSize= 'bold'
         style={[
@@ -22,7 +22,7 @@ const CustomButton = ({onPress, text, type= 'PRIMARY', bgColor, fgColor, ftWeigh
         ]}>
         {text}
     </Text> 
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
