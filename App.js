@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Login from './screens/Login';
+import Login from './screens/LoginScreen';
 
 export default function App() {
   return (

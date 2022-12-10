@@ -6,8 +6,8 @@ import {
     StyleSheet,
     ScrollView
 } from 'react-native';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomInput from '../../components/CustomInputLogin';
+import CustomButton from '../../components/CustomButtonLogin/CustomButton';
 
 const Login = () => { 
 
