@@ -9,11 +9,11 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 
 const Doacao = () => { 
     const onSignInPressed = () => {
-        console.warn('Formulário de Doações');
+        console.warn('FORMULÁRIO DE DOAÇÕES');
     }
 
     const onSignInPressed2 = () => {
-        console.warn('Formulário de Atividades');
+        console.warn('HISTÓRICO DE DOAÇÕES');
     }
 
     return(
@@ -23,14 +23,14 @@ const Doacao = () => {
                     <View style={styles.container}>     
                             <CustomButton
                                 ftWeight= 'bold'
-                                text='Formulário de Doações' 
+                                text='FORMULÁRIO DE DOAÇÕES' 
                                 onPress= {onSignInPressed} 
                                 bgColor= '#0B63CE'
                                 fgColor= '#fff'
                             /> 
                             <CustomButton 
                                 ftWeight= 'bold'
-                                text='Histórico de Doações' 
+                                text='HISTÓRICO DE DOAÇÕES' 
                                 onPress= {onSignInPressed2} 
                                 bgColor= '#0B63CE'
                                 fgColor= '#fff'
