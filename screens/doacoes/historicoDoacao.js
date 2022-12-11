@@ -1,36 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-web';
 import HistoricCard from '../../components/HistoricCard/historicCard';
 
-const data = [
-  {
-      nameInstitution: "Imip",
-      cityInstitution: "hellcife",
-      value: 10,
-      id: 1
-  },
-
-  {
-      nameInstitution: "Hospital das Clinicas",
-      cityInstitution: "raincife",
-      value: 20,
-      id: 2
-  },
-];
 
 const HistoricoDoacao = () => {
+
+  
+  const [formList, setFormList] = useState();
+
+  const get = async () => {
+    const connectAPI = await (await fetch('https://coding-liferay.herokuapp.com/api/v1/form/get/all'))
+    const data = await connectAPI.json();
+    return data;
+  };
+
+  useEffect(() => {
+    
+    get().then((response) => {
+      setFormList(response);
+      console.log(response)
+    });
+  }, [])
 
   return (
   <ScrollView style={styles.homeScreen}>
     <View>
       <Text style={styles.titleHome}>REGISTRO DE DOAÇÕES</Text>
       <View >
-        {data.map((info) => 
+        {formList?.map((info) => 
         <HistoricCard
-        nameInstitution={info.nameInstitution}
+        name={info.institution.name}
         value={info.value}
-        id={info.id}
+        id={info.id}       
          />)}
       </View>
       

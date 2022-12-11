@@ -15,8 +15,8 @@ function HistoricCard(props) {
     
   return (
     <View style={styles.containerbox}>
-        <Text style={styles.CardTitle}>{props.nameInstitution}</Text>
-     <Text style={styles.Infos}>Valor doado: R${props.value}</Text>
+        <Text style={styles.CardTitle}>{props.name}</Text>
+     <Text style={styles.Infos}>Valor doado: R$ {props.value} </Text>
     <View style={styles.buttonLine}>
         <Pressable style={styles.Edit}>
                 <Ionicons name="ios-create-outline" color="white" size={30} onPress={editButton}/>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
       borderRadius: 7,
       borderWidth: 1,
   
-      marginTop: 10,
+      marginTop: 2,
       marginBottom: 10,
     },
     Delete: {
@@ -83,17 +83,15 @@ const styles = StyleSheet.create({
 
       paddingVertical: 10,
       paddingHorizontal: 10,
-      marginVertical: 10,
       marginTop: 10,
     },
     CardTitle: {
-        fontSize: 26,
+        fontSize: 22,
         fontWeight: 'bold',
         color: '#0B63CE',
 
         paddingVertical: 10,
         paddingHorizontal: 10,
-        marginVertical: 10,
         marginTop: 10,
     },
     button: {
