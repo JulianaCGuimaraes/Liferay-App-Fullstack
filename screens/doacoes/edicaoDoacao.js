@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-web';
 
 
-const FormularioDoacao = () => {
+const EdicaoDoacao = () => {
 
   const sendButton = () => {
     console.warn('Formulário Enviado');
@@ -12,7 +12,7 @@ const FormularioDoacao = () => {
   return (
   <ScrollView style={styles.homeScreen}>
     <View>
-      <Text style={styles.titleHome}>FORMULÁRIO DE DOAÇÃO</Text>
+      <Text style={styles.titleHome}>EDIÇÃO DO FORMULÁRIO </Text>
             <TextInput style={styles.container} placeholder="Nome da Instituição" />
             <TextInput style={styles.container} placeholder="Email da Instituição" />
             <TextInput style={styles.container} placeholder="Cidade da Instituição" />
@@ -74,4 +74,4 @@ const FormularioDoacao = () => {
   },
 });
 
-export default FormularioDoacao;
+export default EdicaoDoacao;
