@@ -15,6 +15,10 @@ import Intro from '../../screens/Login/Principal';
 import {WebView} from 'react-native-webview';
 import { StatusBar } from 'expo-status-bar';
 import HistoricCard from '../../components/HistoricCard/historicCard';
+import CustomButtonAjuda from "../../components/Ajuda/CustomButton";
+import styles from "../../screens/stylesApp";
+import Perguntas from '../../components/Ajuda/Perguntas';
+import Termos from '../../components/Ajuda/Termos';
 
 const data = [
   {
@@ -247,21 +251,95 @@ function Formularios({navigation}) {
     );
   }
   
-  function Ajuda() {
-    return (
+  function Ajuda({navigation}) {
+      const onSignInPressed = () => {
+        console.warn('PERGUNTAS FREQUENTES');
+        navigation.navigate("FAQ");
+    }
+
+    const onSignInPressed2 = () => {
+        console.warn('TERMOS E CONDIÇÕES DE USO');
+        navigation.navigate("Termos");
+    }
+
+    return(
+        <ScrollView style={styles.buttonScreenAjuda} showsVerticalScrollIndicator={false}>
+            <View>
+                <Text style={styles.titleButtonAjuda}>AJUDA</Text>
+                    <View style={styles.containerAjuda}>     
+                            <CustomButtonAjuda
+                                ftWeight= 'bold'
+                                text='PERGUNTAS FREQUENTES' 
+                                onPress= {onSignInPressed} 
+                                bgColor= '#0B63CE'
+                                fgColor= '#fff'
+                            /> 
+                            <CustomButtonAjuda 
+                                ftWeight= 'bold'
+                                text='TERMOS E CONDIÇÕES DE USO' 
+                                onPress= {onSignInPressed2} 
+                                bgColor= '#0B63CE'
+                                fgColor= '#fff'
+                            /> 
+                    </View>
+            </View>
+        </ScrollView>
+  );
+    /* return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Liferay App</Text>
       </View>    
-  );
+    ); */
   }
 
-  function LogoLiferay() {
+  const PerguntasFrequentes = () => {
+    return (
+    <ScrollView style={styles.perguntasFrequentesScreen}>
+        <View>
+            <View>
+                <Text style={styles.titlePerguntas}>PERGUNTAS USUAIS</Text>
+            </View>
+
+            <Perguntas />
+        </View>
+  </ScrollView>
+  );
+};
+
+const TermosECondicoes = () => {
+  return (
+  <ScrollView style={styles.termosScreen}>
+      <View>
+          <View>
+              <Text style={styles.titleTermos}>TERMOS E CONDIÇÕES</Text>
+          </View>
+
+          <Termos />
+      </View>
+  </ScrollView>
+);
+};
+
+
+function LogoLiferay() {
     return (
       <Image
         style={{ width: 200, height: 50 }}
         source={require('../../assets/images/liferay-logo.png')}
       />
     );
+  }
+
+  //Telas de ajuda e termos de uso
+
+  function AjudaeTermos(){
+    return(
+      <Stack.Navigator>
+          <Stack.Screen name="Ajuda" component={Ajuda} options={tabOptionsHide} />
+          <Stack.Screen name="FAQ" component={PerguntasFrequentes} options={{ headerShown: false }}/>
+          <Stack.Screen name="Termos" component={TermosECondicoes} options={{ headerShown: false }}/>
+      </Stack.Navigator>
+    );  
   }
 
   //Navbar de formularios de doação
@@ -319,7 +397,7 @@ function Formularios({navigation}) {
                 <Tab.Screen name="Usuário" component={PerfilUsuario} options={tabOptions} />
                 <Tab.Screen name="Formulários" component={Forms} options={tabOptions} />
                 <Tab.Screen name="Mapa" component={Mapa} options={tabOptions} />
-                <Tab.Screen name="Ajuda" component={Ajuda} options={tabOptions} />
+                <Tab.Screen name="Ajuda" component={AjudaeTermos} options={tabOptions} />
             </Tab.Group>
         </Tab.Navigator>
     );
@@ -338,164 +416,3 @@ function Formularios({navigation}) {
       </NavigationContainer>
     );
   }
-
-//CSS
-
-const styles = StyleSheet.create({
-    buttonScreen: {
-        backgroundColor: 'white',
-        paddingTop: 30,
-        paddingHorizontal: 50
-    },
-    container: {
-        flex: 1,
-        marginTop: '40%',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        paddingHorizontal: 50,
-        alignItems: 'center',
-    },
-    titleButton: {
-        fontSize: 26,
-        fontWeight: 'bold',
-        color: '#0B63CE'
-    
-    },
-    containerLogo: {
-      flex: 1,
-      marginTop: '40%',
-      alignItems: 'center',
-      backgroundColor: '#ffff',
-      padding: 50,
-  },
-    logo: {
-        width: '90%',
-        height: 170,
-        maxWidth: 300,
-        maxheight: 200,
-  },
-    titulo: {
-        color: '#0d6efd',
-        fontSize: '25px',
-        fontWeight: 80,
-        paddingHorizontal: 50 ,
-        marginBottom: 50
-  },
-    containerLogoLogin: {
-      flex: 1,
-      marginTop: "40%",
-      alignItems: 'center',
-      backgroundColor: '#0d6efd',
-      padding: 10,
-      height: 667
-},
-    logoLogin: {
-        width: '70%',
-        height: 70,
-        maxWidth: 300,
-        maxheight: 200,
-},
-    tituloLogin: {
-        color: '#fff',
-        fontSize: '25px',
-        fontWeight: 500,
-        paddingHorizontal: '50px' ,
-        marginBottom: '50px'
-},
-    containerMapa: {
-      marginTop: 28,
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-},
-    homeScreen: {
-      backgroundColor: 'white',
-      paddingTop: 20,
-      paddingHorizontal: 30,
-      width: 375
-},
-    titleHome: {
-      fontSize: 26,
-      fontWeight: 'bold',
-      color: '#0B63CE',
-      marginBottom: 50,
-},
-    containerFormDoacao: {
-      backgroundColor: '#fff',
-      width: '90%',
-      color: '#0B63CE',
-
-      borderColor: '#0B63CE',
-      borderRadius: 7,
-      borderWidth: 1,
-
-      paddingVertical: 10,
-      paddingHorizontal: 15,
-      marginVertical: 10,
-      marginTop: 10,
-},
-    sendButton: {
-      backgroundColor: '#0B63CE',
-      width: '90%',
-      color: '#fff',
-
-      borderColor: '#fff',
-      borderRadius: 7,
-      borderWidth: 1,
-
-      paddingVertical: 10,
-      paddingHorizontal: 115,
-      marginVertical: 10,
-      marginTop: 10,
-},
-  homeScreenHistDoacao: {
-    backgroundColor: 'white',
-    paddingTop: 20,
-    paddingHorizontal: 30,
-    width: 375
-},
-  titleHomeHistDoacao: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '#0B63CE',
-    marginBottom: 50,
-},
-  containerbox: {    
-    borderColor: '#0B63CE',
-    borderRadius: 7,
-    borderWidth: 1,
-
-    marginTop: 10,
-    marginBottom: 10,
-},
-  Delete: {
-    backgroundColor: '#D0312D',
-    color: '#fff',
-
-    borderRadius: 7,
-
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    marginTop: 10,
-},
-  Edit: {
-    backgroundColor: '#5DBB63',
-    color: '#fff',
-
-    borderRadius: 7,
-
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    marginTop: 10,
-},
-  Infos: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    marginTop: 10,
-},
-});
-// headerLeft: () => (<Image source={require('./assets/images/liferay-logo.png')} />),
