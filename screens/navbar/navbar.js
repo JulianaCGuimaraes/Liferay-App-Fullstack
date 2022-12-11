@@ -324,8 +324,8 @@ const TermosECondicoes = () => {
 function LogoLiferay() {
     return (
       <Image
-        style={{ width: 200, height: 50 }}
-        source={require('../../assets/images/liferay-logo.png')}
+        style={{ width: 120, height: 35 }}
+        source={require('../../assets/images/liferay-logo-small.png')}
       />
     );
   }
