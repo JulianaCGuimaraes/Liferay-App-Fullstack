@@ -6,7 +6,6 @@ import HistoricCard from '../../components/HistoricCard/historicCard';
 
 const HistoricoDoacao = () => {
 
-  
   const [formList, setFormList] = useState();
 
   const get = async () => {
@@ -30,9 +29,9 @@ const HistoricoDoacao = () => {
       <View >
         {formList?.map((info) => 
         <HistoricCard
+        id={info.id}       
         name={info.institution.name}
         value={info.value}
-        id={info.id}       
          />)}
       </View>
       

@@ -34,7 +34,7 @@ const EdicaoDoacao = () => {
     postInst().then((response) => {
         console.log(response);
         if (response.status === 201) {
-          console.warn("Formulário Editado!")
+          console.warn("Formulário apagado")
             }
             else {
               console.warn("Formulário Não Editado, Erro com algum campo!")

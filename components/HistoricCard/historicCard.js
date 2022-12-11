@@ -10,8 +10,25 @@ function HistoricCard(props) {
     }
 
     const deleteButton = () => {
-        console.warn('Wow, Much Delete');
-    }
+      const deleteForm = async () => {
+        const connectAPI = await fetch('https://coding-liferay.herokuapp.com/api/v1/form/delete', { method: 'DELETE',  body: JSON.stringify({
+         id: props.id,  
+        }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }})
+
+        return connectAPI;
+    };
+    deleteForm().then((response) => {
+      if (response.status === 200) {
+        console.warn("Formulário Deletado Com sucesso!")
+          }
+          else {
+            console.warn("Formulário Não Deletado!")
+          }
+  })
+    };
     
   return (
     <View style={styles.containerbox}>
