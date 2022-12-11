@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import Navbar from '../../screens/navbar/navbar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Login = () => { 
 
@@ -16,6 +19,7 @@ const Login = () => {
 
     const onSignInPressed = () => {
         console.warn('Submit');
+        navigation.navigate('Navbar')
     }
 
     const onForgotPasswordPressed = () => {
@@ -23,7 +27,7 @@ const Login = () => {
     }
 
     return(
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{  backgroundColor: '#0d6efd' }} >
             <View style={styles.containerLogo}>
                     <Image style={styles.logo} source={require('../../assets/images/liferay-logo.png')}/>
                     <Text style={styles.titulo}>Doações</Text>
@@ -62,10 +66,11 @@ const Login = () => {
 const styles = StyleSheet.create({
     containerLogo: {
         flex: 1,
-        marginTop: '40%',
+        marginTop: "40%",
         alignItems: 'center',
         backgroundColor: '#0d6efd',
-        padding: 10
+        padding: 10,
+        height: 667
     },
     logo: {
         width: '70%',
@@ -81,5 +86,6 @@ const styles = StyleSheet.create({
         marginBottom: '50px'
     }
 });
+
 
 export default Login;

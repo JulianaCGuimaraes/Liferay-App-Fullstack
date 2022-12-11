@@ -5,7 +5,14 @@ import {
     StyleSheet,
     ScrollView
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../../components/CustomButtonDoacoes/CustomButtonDoacoes';
+import formDoacao from '../../screens/formularioDoacao/formularioDoacao';
+
+const formularioDoacao = () => {
+    return <formDoacao />
+}
 
 const Doacao = () => { 
     const onSignInPressed = () => {

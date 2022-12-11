@@ -6,8 +6,25 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Doacao from '../../screens/doacoes/doacao';
 import Home from '../../screens/home/home';
-//import Logo from './/liferay-logo.png';
+import formDoacao from '../formularioDoacao/formularioDoacao';
+import Login from '../../screens/Login/Login';
+import Intro from '../../screens/Login/Principal';
 
+function TelaLogin() {
+  return (
+    <View >
+      <Login />
+    </View>
+  );
+}
+
+function TelaIntro() {
+  return (
+    <View style={{  backgroundColor: '#ffff' }} >
+      <Intro />
+    </View>
+  );
+}
 
 function PerfilUsuario() {
     return (
@@ -42,6 +59,7 @@ function PerfilUsuario() {
   }
 
   const Tab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
 
  /*  const IconeLiferay = () => {
     <Image source={require('../images/liferay-logo.png')} />;  
@@ -64,8 +82,25 @@ function PerfilUsuario() {
         fontWeight: 'bold',
     }
   };
-  
-  export default function navbar() {
+
+  const tabOptionsHide= {
+    headerTitle: () => <LogoLiferay/>,  
+    headerStyle: { backgroundColor: '#0B63CE'},
+    headerTintColor: 'white',
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    },
+    headerShown: 'False'
+  };
+
+  function forms(){
+    <Stack.Navigator>
+        <Stack.Screen name="FormDoacoes" component={formDoacao} />
+        <Stack.Screen name="FormAtividades" component={formAtividade} />
+    </Stack.Navigator>
+  }
+
+  function navbar() {
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -110,6 +145,18 @@ function PerfilUsuario() {
                 <Tab.Screen name="Ajuda" component={Ajuda} options={tabOptions} />
             </Tab.Group>
         </Tab.Navigator>
+      </NavigationContainer>
+    );
+  }
+
+  export default function intro(){
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Intro" component={TelaIntro} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={TelaLogin} options={{ headerShown: false }}/>
+          <Stack.Screen name="Navbar" component={navbar} options={{ headerShown: false }} />
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }

@@ -2,10 +2,12 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import Login from './screens/Login';
 import Navbar from './screens/navbar/navbar';
+import Intro from './screens/Login/Principal';
 
 export default function App() {
   return (
-      <Navbar />
+        <Navbar />
+        //<Login />
   );
 };
 
