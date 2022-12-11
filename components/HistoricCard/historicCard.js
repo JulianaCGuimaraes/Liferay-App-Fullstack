@@ -15,8 +15,9 @@ function HistoricCard(props) {
     
   return (
     <View style={styles.containerbox}>
-    <View style={{flexDirection: 'row'}}>
         <Text style={styles.CardTitle}>{props.nameInstitution}</Text>
+     <Text style={styles.Infos}>Valor doado: R${props.value}</Text>
+    <View style={styles.buttonLine}>
         <Pressable style={styles.Edit}>
                 <Ionicons name="ios-create-outline" color="white" size={30} onPress={editButton}/>
         </Pressable>
@@ -24,7 +25,6 @@ function HistoricCard(props) {
                 <Ionicons name="ios-trash-outline" color="white" size={30} onPress={deleteButton}/>
         </Pressable>
       </View>
-     <Text style={styles.Infos}>Valor doado: R${props.value}</Text>
   </View>
   );
 };
@@ -41,6 +41,10 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#0B63CE',
       marginBottom: 50,
+    },
+    buttonLine: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly'
     },
     containerbox: {    
       borderColor: '#0B63CE',
@@ -91,6 +95,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         marginVertical: 10,
         marginTop: 10,
+    },
+    button: {
+      paddingVertical: 10,
+      paddingHorizontal: 10,
+      marginVertical: 10,
+      marginTop: 10,
     },
   });
 

@@ -5,15 +5,17 @@ import HistoricCard from '../../components/HistoricCard/historicCard';
 
 const data = [
   {
-      nameInstitution: "imip",
+      nameInstitution: "Imip",
       cityInstitution: "hellcife",
-      value: 10
+      value: 10,
+      id: 1
   },
 
   {
-      nameInstitution: "hc",
+      nameInstitution: "Hospital das Clinicas",
       cityInstitution: "raincife",
-      value: 20
+      value: 20,
+      id: 2
   },
 ];
 
@@ -27,8 +29,9 @@ const HistoricoDoacao = () => {
         {data.map((info) => 
         <HistoricCard
         nameInstitution={info.nameInstitution}
-
-        value={info.value} />)}
+        value={info.value}
+        id={info.id}
+         />)}
       </View>
       
     </View>
