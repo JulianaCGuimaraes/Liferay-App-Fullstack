@@ -8,11 +8,8 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton from '../../components/CustomButtonDoacoes/CustomButtonDoacoes';
-import formDoacao from '../../screens/formularioDoacao/formularioDoacao';
 
-const formularioDoacao = () => {
-    return <formDoacao />
-}
+
 
 function Doacao() { 
     const onSignInPressed = () => {

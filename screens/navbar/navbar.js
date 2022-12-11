@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, Image, ScrollView, StyleSheet} from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, Pressable, TextInput} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,9 +9,52 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import Doacao from '../../screens/doacoes/doacao';
 import Home from '../../screens/home/home';
-//import formDoacao from '../../screens/formularioDoacao/formularioDoacao';
+import FormDoacao from '../fomularioDoacao/formularioDoacao';
 import Login from '../../screens/Login/Login';
 import Intro from '../../screens/Login/Principal';
+import {WebView} from 'react-native-webview';
+import { StatusBar } from 'expo-status-bar';
+import HistoricCard from '../../components/HistoricCard/historicCard';
+
+const data = [
+  {
+      nameInstitution: "Imip",
+      cityInstitution: "hellcife",
+      value: 10,
+      id: 1
+  },
+
+  {
+      nameInstitution: "Hospital das Clinicas",
+      cityInstitution: "raincife",
+      value: 20,
+      id: 2
+  },
+];
+
+const tabOptions = {
+  headerTitle: () => <LogoLiferay/>,  
+  headerStyle: { backgroundColor: '#0B63CE'},
+  headerTintColor: 'white',
+  headerTitleStyle: {
+      fontWeight: 'bold',
+  }
+};
+
+const tabOptionsHide= {
+  headerTitle: () => <LogoLiferay/>,  
+  headerStyle: { backgroundColor: '#0B63CE'},
+  headerTintColor: 'white',
+  headerTitleStyle: {
+      fontWeight: 'bold',
+  },
+  headerShown: false
+};
+
+const iframe = 'https://www.google.com/maps/d/u/3/embed?mid=1dKPQ8Rw0iNrfELbQ7kYHCn2HHV9hM-w&ehbc=2E312F'
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
 //Tela de Login (ainda estou testando modulação para diminuir o código)
@@ -87,11 +130,6 @@ function TelaIntro({navigation}) {
               </View>
           </ScrollView>
       );
- /*  return (
-    <View style={{flex:1, backgroundColor: '#ffff' }} >
-      <Intro />
-    </View>
-  ); */
 }
 
 function PerfilUsuario() {
@@ -111,6 +149,7 @@ function Formularios({navigation}) {
 
     const onSignInPressed2 = () => {
         console.warn('HISTÓRICO DE DOAÇÕES');
+        navigation.navigate('FormHistDoacoes')
     }
 
     return(
@@ -143,9 +182,57 @@ function Formularios({navigation}) {
     ); */
   }
 
-  function Mapa() {
+  function TelaformDoacao(){
+      const sendButton = () => {
+        console.warn('Formulário Enviado');
+    }
+    
+      return (
+      <ScrollView style={styles.homeScreen}>
+        <View>
+          <Text style={styles.titleHome}>FORMULÁRIO DE DOAÇÃO</Text>
+                <TextInput style={styles.containerFormDoacao} placeholder="Nome da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder="Email da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder="Cidade da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder="Estado da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder=" País da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder="Telefone da Instituição" />
+                <TextInput style={styles.containerFormDoacao} placeholder="Valor da Doação" />
+    
+                <Pressable>
+                  <Text style={styles.sendButton} onPress={sendButton}>Enviar</Text>
+                </Pressable>
+    
+        </View>
+      </ScrollView>
+      );
+    /* return(
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <FormDoacao />
+      </View>
+    ); */
+  }
 
-    const iframe = 'https://www.google.com/maps/d/u/3/embed?mid=1dKPQ8Rw0iNrfELbQ7kYHCn2HHV9hM-w&ehbc=2E312F'
+  function TelaHistDoacoes() {
+      return (
+        <ScrollView style={styles.homeScreenHistDoacao}>
+          <View>
+            <Text style={styles.titleHomeHistDoacao}>REGISTRO DE DOAÇÕES</Text>
+            <View >
+              {data.map((info) => 
+              <HistoricCard
+              nameInstitution={info.nameInstitution}
+              value={info.value}
+              id={info.id}
+              />)}
+            </View>
+            
+          </View>
+        </ScrollView>
+        );
+      };
+
+  function Mapa() {
 
     return (
       <View style={styles.containerMapa}>
@@ -168,9 +255,6 @@ function Formularios({navigation}) {
   );
   }
 
-  const Tab = createBottomTabNavigator();
-  const Stack = createNativeStackNavigator();
-
   function LogoLiferay() {
     return (
       <Image
@@ -180,32 +264,14 @@ function Formularios({navigation}) {
     );
   }
 
-  const tabOptions = {
-    headerTitle: () => <LogoLiferay/>,  
-    headerStyle: { backgroundColor: '#0B63CE'},
-    headerTintColor: 'white',
-    headerTitleStyle: {
-        fontWeight: 'bold',
-    }
-  };
-
-  const tabOptionsHide= {
-    headerTitle: () => <LogoLiferay/>,  
-    headerStyle: { backgroundColor: '#0B63CE'},
-    headerTintColor: 'white',
-    headerTitleStyle: {
-        fontWeight: 'bold',
-    },
-    headerShown: false
-  };
-
   //Navbar de formularios de doação
 
   function Forms(){
     return(
       <Stack.Navigator>
           <Stack.Screen name="Formularios" component={Formularios} options={tabOptionsHide} />
-          <Stack.Screen name="FormDoacoes" component={formDoacao} />
+          <Stack.Screen name="FormDoacoes" component={TelaformDoacao} options={{ headerShown: false }}/>
+          <Stack.Screen name="FormHistDoacoes" component={TelaHistDoacoes} options={{ headerShown: false }}/>
       </Stack.Navigator>
     );  
   }
@@ -342,6 +408,94 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+},
+    homeScreen: {
+      backgroundColor: 'white',
+      paddingTop: 20,
+      paddingHorizontal: 30,
+      width: 375
+},
+    titleHome: {
+      fontSize: 26,
+      fontWeight: 'bold',
+      color: '#0B63CE',
+      marginBottom: 50,
+},
+    containerFormDoacao: {
+      backgroundColor: '#fff',
+      width: '90%',
+      color: '#0B63CE',
+
+      borderColor: '#0B63CE',
+      borderRadius: 7,
+      borderWidth: 1,
+
+      paddingVertical: 10,
+      paddingHorizontal: 15,
+      marginVertical: 10,
+      marginTop: 10,
+},
+    sendButton: {
+      backgroundColor: '#0B63CE',
+      width: '90%',
+      color: '#fff',
+
+      borderColor: '#fff',
+      borderRadius: 7,
+      borderWidth: 1,
+
+      paddingVertical: 10,
+      paddingHorizontal: 115,
+      marginVertical: 10,
+      marginTop: 10,
+},
+  homeScreenHistDoacao: {
+    backgroundColor: 'white',
+    paddingTop: 20,
+    paddingHorizontal: 30,
+    width: 375
+},
+  titleHomeHistDoacao: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#0B63CE',
+    marginBottom: 50,
+},
+  containerbox: {    
+    borderColor: '#0B63CE',
+    borderRadius: 7,
+    borderWidth: 1,
+
+    marginTop: 10,
+    marginBottom: 10,
+},
+  Delete: {
+    backgroundColor: '#D0312D',
+    color: '#fff',
+
+    borderRadius: 7,
+
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    marginTop: 10,
+},
+  Edit: {
+    backgroundColor: '#5DBB63',
+    color: '#fff',
+
+    borderRadius: 7,
+
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    marginTop: 10,
+},
+  Infos: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    marginTop: 10,
 },
 });
 // headerLeft: () => (<Image source={require('./assets/images/liferay-logo.png')} />),
