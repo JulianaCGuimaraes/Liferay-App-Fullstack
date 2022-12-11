@@ -43,7 +43,7 @@ const ProgressBar = (props) => {
         </div>
         
         <View style={valorContainerStyles}>
-          <Text style={valorStyles}>R$ 150.00 / R$300.00</Text>
+          <Text style={valorStyles}>R$ 150.00 / R$1000.00</Text>
         </View>
     </div>
   );

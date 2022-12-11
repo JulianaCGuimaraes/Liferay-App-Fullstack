@@ -42,7 +42,7 @@ const ProgressBar = (props) => {
         </div>
         
         <View style={valorContainerStyles}>
-          <Text style={valorStyles}>8 Hrs / 15 Hrs</Text>
+          <Text style={valorStyles}>8 Hrs / 40 Hrs</Text>
         </View>
     </div>
   );
