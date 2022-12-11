@@ -19,7 +19,6 @@ const Login = () => {
 
     const onSignInPressed = () => {
         console.warn('Submit');
-        navigation.navigate('Navbar')
     }
 
     const onForgotPasswordPressed = () => {

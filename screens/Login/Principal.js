@@ -8,17 +8,11 @@ import {
 } from 'react-native';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const Principal = () => { 
-
+function Principal(){ 
 
     const onTap = () => {
         console.warn('Entrar');
     }
-
-    const onSignInPressed2 = () => {
-        console.warn('Submit');
-    }
-
 
     return(
         <ScrollView showsVerticalScrollIndicator={false} style={{  backgroundColor: '#ffff' }}>

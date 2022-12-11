@@ -14,7 +14,7 @@ const formularioDoacao = () => {
     return <formDoacao />
 }
 
-const Doacao = () => { 
+function Doacao() { 
     const onSignInPressed = () => {
         console.warn('FORMULÁRIO DE DOAÇÕES');
     }
