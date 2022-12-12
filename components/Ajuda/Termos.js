@@ -5,7 +5,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const Termos = () => {
+function Termos() {
     return (
       <View style={styles.containerText}>
             <View style={styles.containerSpace}>

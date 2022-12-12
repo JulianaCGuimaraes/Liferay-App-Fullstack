@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { ScrollView } from 'react-native-web';
+import { ScrollView } from 'react-native';
 import DoacaoGrafico from '../../components/HomeScreen/DoacaoGrafico';
 import AtividadeGrafico from '../../components/HomeScreen/AtividadeGrafico';
 
-const HomeScreen = () => {
+function HomeScreen(){
   return (
   <ScrollView style={styles.homeScreen}>
     <View>

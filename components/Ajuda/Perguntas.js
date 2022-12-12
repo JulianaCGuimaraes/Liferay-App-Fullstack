@@ -5,7 +5,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const Perguntas = () => {
+function Perguntas(){
     return (
       <View style={styles.containerText}>
             <View style={styles.containerSpace}>

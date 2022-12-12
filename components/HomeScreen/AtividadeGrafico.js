@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BarAtv from '../Progress/BarAtv';
 
-const AtividadeGrafico = () => {
+function AtividadeGrafico() {
   return (
     <View>
       <TouchableOpacity style = {styles.progressContainer}>

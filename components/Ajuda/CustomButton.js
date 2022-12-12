@@ -1,14 +1,14 @@
 import { Text, StyleSheet, TouchableOpacity} from 'react-native'
 import React from 'react'
 
-const CustomButton = ({
+function CustomButton ({
         onPress, 
         text, 
         type= 'PRIMARY', 
         bgColor, 
         fgColor, 
         ftWeight
-}) => {
+}) {
   return (
     <TouchableOpacity
         onPress={onPress}
@@ -35,19 +35,18 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#fff',
+        marginVertical: 10,
+        alignItems: 'center',
+        borderRadius: 10,
         height: '50%',
         width: '100%',
-        padding: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-        marginVertical: 30,
-        
+        padding: 29, 
     },
     text:{
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: 28,
+        fontSize: 20,
         textAlign: 'center',
     }
 })

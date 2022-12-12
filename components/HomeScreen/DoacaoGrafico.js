@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BarDoacao from '../Progress/BarDoacao';
 
-const DoacaoGrafico = () => {
+function DoacaoGrafico(){
   return (
     <View>
       <TouchableOpacity style = {styles.progressContainer}>

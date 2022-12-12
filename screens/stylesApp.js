@@ -1,23 +1,24 @@
 import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    buttonScreen: {
+    buttonScreenDoacao: {
         backgroundColor: 'white',
-        paddingTop: 30,
+        paddingTop: 20,
         paddingHorizontal: 50
     },
-    container: {
+    containerDoacao: {
         flex: 1,
-        marginTop: '40%',
+        marginTop: '25%',
         alignItems: 'center',
         backgroundColor: '#fff',
-        paddingHorizontal: 50,
+        paddingHorizontal: 10,
         alignItems: 'center',
     },
-    titleButton: {
+    titleButtonDoacao: {
         fontSize: 26,
         fontWeight: 'bold',
-        color: '#0B63CE'
+        color: '#0B63CE',
+        textAlign: "center"
     
     },
     containerLogo: {
@@ -56,29 +57,30 @@ const styles = StyleSheet.create({
 },
     tituloLogin: {
         color: '#fff',
-        fontSize: '25px',
-        fontWeight: 500,
-        paddingHorizontal: '50px' ,
-        marginBottom: '50px'
+        fontSize: 25,
+        fontWeight: '500',
+        paddingHorizontal: 50 ,
+        marginBottom: 50
 },
     containerMapa: {
-      marginTop: 28,
+      marginTop: 0,
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
 },
-    homeScreen: {
+    homeScreenFormDoacao: {
       backgroundColor: 'white',
       paddingTop: 20,
       paddingHorizontal: 30,
       width: 375
 },
-    titleHome: {
+    titleHomeFormDoacao: {
       fontSize: 26,
       fontWeight: 'bold',
       color: '#0B63CE',
-      marginBottom: 50,
+      marginBottom: 30,
+      textAlign: "center"
 },
     containerFormDoacao: {
       backgroundColor: '#fff',
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
       marginVertical: 10,
       marginTop: 10,
 },
-    sendButton: {
+    sendButtonFormDoacao: {
       backgroundColor: '#0B63CE',
       width: '90%',
       color: '#fff',
@@ -119,6 +121,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0B63CE',
     marginBottom: 50,
+    textAlign: "center"
 },
   containerbox: {    
     borderColor: '#0B63CE',
@@ -158,15 +161,15 @@ const styles = StyleSheet.create({
 },
   buttonScreenAjuda: {
     backgroundColor: 'white',
-    paddingTop: 30,
+    paddingTop: 20,
     paddingHorizontal: 10
 },
   containerAjuda: {
     flex: 1,
-    marginTop: '0%',
+    marginTop: '20%',
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 40,
+    paddingHorizontal: 50,
     alignItems: 'center',
 },
   titleButtonAjuda: {

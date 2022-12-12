@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View } from 'react-native';
 
 
-const ProgressBar = (props) => {
+function ProgressBar(props){
   const { bgcolor, completed } = props;
 
   const containerStyles = {
@@ -10,7 +10,7 @@ const ProgressBar = (props) => {
     width: '100%',
     backgroundColor: "rgba(13, 110, 253, 0.43)",
     borderRadius: 5,
-    paddingHorizontal: 15,
+    paddingHorizontal: 0,
   }
 
   const fillerStyles = {
@@ -37,15 +37,14 @@ const ProgressBar = (props) => {
   }
 
   return (
-    <div style={containerStyles}>
-        <div style={fillerStyles}>
-          <span style={labelStyles}></span>
-        </div>
-        
+    <View style={containerStyles}>
+        <View style={fillerStyles}>
+          <Text style={labelStyles}></Text>
+        </View>
         <View style={valorContainerStyles}>
           <Text style={valorStyles}>R$ 150.00 / R$300.00</Text>
         </View>
-    </div>
+    </View>
   );
 };
 
