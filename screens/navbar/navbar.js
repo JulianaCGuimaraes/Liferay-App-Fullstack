@@ -186,7 +186,7 @@ function Formularios({navigation}) {
     ); */
   }
 
-  function TelaformDoacao(){
+function TelaformDoacao(){
       const sendButton = () => {
         console.warn('Formulário Enviado');
     }
@@ -217,7 +217,7 @@ function Formularios({navigation}) {
     ); */
   }
 
-  function TelaHistDoacoes() {
+function TelaHistDoacoes() {
       return (
         <ScrollView style={styles.homeScreenHistDoacao}>
           <View>
@@ -236,7 +236,7 @@ function Formularios({navigation}) {
         );
       };
 
-  function Mapa() {
+function Mapa() {
 
     return (
       <View style={styles.containerMapa}>
@@ -251,7 +251,7 @@ function Formularios({navigation}) {
     );
   }
   
-  function Ajuda({navigation}) {
+function Ajuda({navigation}) {
       const onSignInPressed = () => {
         console.warn('PERGUNTAS FREQUENTES');
         navigation.navigate("FAQ");
@@ -332,7 +332,7 @@ function LogoLiferay() {
 
   //Telas de ajuda e termos de uso
 
-  function AjudaeTermos(){
+function AjudaeTermos(){
     return(
       <Stack.Navigator>
           <Stack.Screen name="Ajuda" component={Ajuda} options={tabOptionsHide} />
@@ -344,7 +344,7 @@ function LogoLiferay() {
 
   //Navbar de formularios de doação
 
-  function Forms(){
+function Forms(){
     return(
       <Stack.Navigator>
           <Stack.Screen name="Formularios" component={Formularios} options={tabOptionsHide} />
@@ -356,7 +356,7 @@ function LogoLiferay() {
 
 //Navbar central (perfil, formulários, mapa e etc.)
 
-  function Navbar() {
+function Navbar() {
     return (
         <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -405,7 +405,7 @@ function LogoLiferay() {
 
 //Navbar mestra(intro, login e acesso à navbar central)
 
-  export default function intro(){
+export default function intro(){
     return (
       <NavigationContainer>
         <Stack.Navigator>

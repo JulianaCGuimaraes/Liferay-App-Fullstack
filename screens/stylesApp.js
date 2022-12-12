@@ -158,58 +158,51 @@ const styles = StyleSheet.create({
 },
   buttonScreenAjuda: {
     backgroundColor: 'white',
-    paddingTop: 50,
-    paddingHorizontal: 20
+    paddingTop: 30,
+    paddingHorizontal: 10
 },
   containerAjuda: {
     flex: 1,
-    marginTop: '15%',
+    marginTop: '0%',
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 50,
+    paddingHorizontal: 40,
     alignItems: 'center',
 },
   titleButtonAjuda: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#0B63CE'
+    color: '#0B63CE',
+    textAlign: "center"
 },
   perguntasFrequentesScreen: {
     backgroundColor: 'white',
-    paddingTop: 50,
+    paddingTop: 10,
     paddingHorizontal: 20
   },
   titlePerguntas: {
+    flex:1,
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#0B63CE'
+    color: '#0B63CE',
+    justifyContent: "center",
+    textAlign: "center"
   },
   containerTextPerguntas: {
     textAlign: 'center',
     color: '#0B63CE',
     marginHorizontal: 15,
   },
-    titlePerguntas: {
-      fontSize: 24,
-      color: '#0B63CE',
-      paddingTop: 20
-    },
-    textPerguntas: {
-      fontSize: 14,
-      color: '#0B63CE',
-    },
-    containerSpacePerguntas: {
-      marginVertical: 10
-    },
     termosScreen: {
         backgroundColor: 'white',
-        paddingTop: 50,
+        paddingTop: 10,
         paddingHorizontal: 20
       },
     titleTermos: {
         fontSize: 26,
         fontWeight: 'bold',
-        color: '#0B63CE'
+        color: '#0B63CE',
+        textAlign: "center"
       },
 });
 
