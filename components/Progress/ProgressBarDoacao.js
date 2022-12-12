@@ -33,7 +33,7 @@ function ProgressBar(props){
   const valorStyles = {
     fontSize: 18,
     color: '#0B63CE',
-    fontWeight: 600
+    fontWeight: '600'
   }
 
   return (
