@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Pressable, TextInput} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -256,7 +256,94 @@ function TelaformDoacao(){
     ); */
   }
 
+function EdicaoDoacao(){
+
+    const [name, setName] = useState();
+    const [country, setCountry] = useState();
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
+    const [estado, setEstado] = useState();
+    const [city, setCity] = useState();
+    const [donation, setDonation] = useState();
+  
+  
+    function sendButton() {
+      const postInst = async () => {
+          const connectAPI = await fetch('https://coding-liferay.herokuapp.com/api/v1/form/put/update', { method: 'POST',  body: JSON.stringify({
+            cityInstitution: city,
+            countryInstitution: country,
+            emailInstitution: email,
+            nameInstitution: name,
+            phoneNumberInstitution: phone,
+            stateInstitution: estado,
+            value: donation
+          }),
+              headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            }})
+  
+          return connectAPI;
+      };
+      postInst().then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            console.warn("Formulário apagado")
+              }
+              else {
+                console.warn("Formulário Não Editado, Erro com algum campo!")
+              }
+      })
+  
+    };
+  
+  
+    return (
+    <ScrollView style={styles.homeScreenFormDoacao}>
+      <View>
+        <Text style={styles.titleHomeFormDoacao}>EDIÇÃO DO FORMULÁRIO </Text>
+        <Text style={styles.titleHome}>FORMULÁRIO DE DOAÇÃO</Text>
+              <TextInput style={styles.containerFormDoacao} placeholder="Nome da Instituição" value={name} onChange={e => setName(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder="Email da Instituição" value={email} onChange={e => setEmail(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder="Cidade da Instituição" value={city} onChange={e => setCity(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder="Estado da Instituição" value={estado} onChange={e => setEstado(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder=" País da Instituição" value={country} onChange={e => setCountry(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder="Telefone da Instituição" value={phone} onChange={e => setPhone(e.target.value)}/>
+  
+              <TextInput style={styles.containerFormDoacao} placeholder="Valor da Doação" value={donation} onChange={e => setDonation(e.target.value)}/>
+  
+              <Pressable>
+                <Text style={styles.sendButtonFormDoacao} onPress={sendButton}>Enviar</Text>
+              </Pressable>
+  
+      </View>
+    </ScrollView>
+    );
+  }; 
+
+
 function TelaHistDoacoes() {
+
+    const [formList, setFormList] = useState();
+
+    const get = async () => {
+      const connectAPI = await (await fetch('https://coding-liferay.herokuapp.com/api/v1/form/get/all'))
+      const data = await connectAPI.json();
+      return data;
+    };
+
+    useEffect(() => {
+      
+      get().then((response) => {
+        setFormList(response);
+        console.log(response)
+      });
+    }, [])
+
       return (
         <ScrollView style={styles.homeScreenHistDoacao}>
           <View>
@@ -267,6 +354,7 @@ function TelaHistDoacoes() {
               nameInstitution={info.nameInstitution}
               value={info.value}
               id={info.id}
+              nomeTela="EdicaoDoacao"
               />)}
             </View>
             
@@ -369,6 +457,16 @@ function LogoLiferay() {
     );
   }
 
+  function EditHistDoacoes(){
+    return(
+      <Stack.Navigator>
+          <Stack.Screen name="FormHistDoacoes" component={TelaHistDoacoes} options={{ headerShown: false }}/>
+          <Stack.Screen name="EdicaoDoacao" component={EdicaoDoacao} options={{ headerShown: false }}/>
+      </Stack.Navigator>
+    );  
+  }
+
+
   //Telas de ajuda e termos de uso
 
 function AjudaeTermos(){
@@ -388,7 +486,7 @@ function Forms(){
       <Stack.Navigator>
           <Stack.Screen name="Formularios" component={Formularios} options={tabOptionsHide} />
           <Stack.Screen name="FormDoacoes" component={TelaformDoacao} options={{ headerShown: false }}/>
-          <Stack.Screen name="FormHistDoacoes" component={TelaHistDoacoes} options={{ headerShown: false }}/>
+          <Stack.Screen name="FormHistDoacoes" component={EditHistDoacoes} options={{ headerShown: false }}/>
       </Stack.Navigator>
     );  
   }

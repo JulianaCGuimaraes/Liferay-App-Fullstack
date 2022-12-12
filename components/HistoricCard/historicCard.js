@@ -1,16 +1,37 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable,  ScrollView, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function HistoricCard(props) {
 
-    const editButton = () => {
-        console.warn('Wow, Much Edit');
-    }
+        const navigation = useNavigation();
 
-    const deleteButton = () => {
-        console.warn('Wow, Much Delete');
-    }
+        const editButton = () => {
+            console.warn('Wow, Much Edit');
+            navigation.navigate(props.nomeTela);
+        }
+
+        const deleteButton = () => {
+        const deleteForm = async () => {
+            const connectAPI = await fetch('https://coding-liferay.herokuapp.com/api/v1/form/delete', { method: 'DELETE',  body: JSON.stringify({
+            id: props.id,  
+            }),
+                headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }})
+
+            return connectAPI;
+        };
+        deleteForm().then((response) => {
+        if (response.status === 200) {
+            console.warn("Formulário Deletado Com sucesso!")
+            }
+            else {
+                console.warn("Formulário Não Deletado!")
+            }
+    })
+        };
     
   return (
     <View style={styles.containerbox}>
