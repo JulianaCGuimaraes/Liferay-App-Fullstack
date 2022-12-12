@@ -19,7 +19,7 @@ import styles from "../../screens/stylesApp";
 import Perguntas from '../../components/Ajuda/Perguntas';
 import Termos from '../../components/Ajuda/Termos';
 
-const data = [
+/* const data = [
   {
       nameInstitution: "Imip",
       cityInstitution: "hellcife",
@@ -33,7 +33,7 @@ const data = [
       value: 20,
       id: 2
   },
-];
+]; */
 
 const tabOptions = {
   headerTitle: () => <LogoLiferay/>,  
@@ -256,26 +256,33 @@ function TelaformDoacao(){
     ); */
   }
 
-function EdicaoDoacao(){
+function EdicaoDoacao({ route, navigation }){
 
-    const [name, setName] = useState();
-    const [country, setCountry] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
-    const [estado, setEstado] = useState();
-    const [city, setCity] = useState();
+    const [formList, setFormList] = useState();
+    const [name, setName] = useState("");
     const [donation, setDonation] = useState();
   
+    const { id } = route.params;
+
+    const get = async () => {
+      const connectAPI = await (await fetch(`https://coding-liferay.herokuapp.com/api/v1/form/get/${id}`))
+      const data = await connectAPI.json();
+      return data;
+    };
+
+    useEffect(() => {
+      
+      get().then((response) => {
+        setFormList(response);
+        console.log(response)
+      });
+    }, [])
   
     function sendButton() {
-      const postInst = async () => {
-          const connectAPI = await fetch('https://coding-liferay.herokuapp.com/api/v1/form/put/update', { method: 'POST',  body: JSON.stringify({
-            cityInstitution: city,
-            countryInstitution: country,
-            emailInstitution: email,
+      const { id } = route.params;
+      const putInst = async () => {
+          const connectAPI = await fetch(`https://coding-liferay.herokuapp.com/api/v1/form/put/update/lean/${id}`, { method: 'PUT',  body: JSON.stringify({
             nameInstitution: name,
-            phoneNumberInstitution: phone,
-            stateInstitution: estado,
             value: donation
           }),
               headers: {
@@ -284,10 +291,11 @@ function EdicaoDoacao(){
   
           return connectAPI;
       };
-      postInst().then((response) => {
+      putInst().then((response) => {
           console.log(response);
           if (response.status === 201) {
-            console.warn("Formulário apagado")
+            console.warn("Formulário editado")
+            navigation.navigate("FormHistDoacoes");
               }
               else {
                 console.warn("Formulário Não Editado, Erro com algum campo!")
@@ -302,24 +310,11 @@ function EdicaoDoacao(){
       <View>
         <Text style={styles.titleHomeFormDoacao}>EDIÇÃO DO FORMULÁRIO </Text>
         <Text style={styles.titleHome}>FORMULÁRIO DE DOAÇÃO</Text>
-              <TextInput style={styles.containerFormDoacao} placeholder="Nome da Instituição" value={name} onChange={e => setName(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder="Email da Instituição" value={email} onChange={e => setEmail(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder="Cidade da Instituição" value={city} onChange={e => setCity(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder="Estado da Instituição" value={estado} onChange={e => setEstado(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder=" País da Instituição" value={country} onChange={e => setCountry(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder="Telefone da Instituição" value={phone} onChange={e => setPhone(e.target.value)}/>
-  
-              <TextInput style={styles.containerFormDoacao} placeholder="Valor da Doação" value={donation} onChange={e => setDonation(e.target.value)}/>
-  
+              <TextInput style={styles.containerFormDoacao}  placeholder= {formList?.institution.name} defaultValue={name} onChange={e => setName(e.target.value)}/> 
+              <TextInput style={styles.containerFormDoacao}  defaultValue={formList?.value} onChange={e => setDonation(e.target.value)}/>
               <Pressable>
                 <Text style={styles.sendButtonFormDoacao} onPress={sendButton}>Enviar</Text>
               </Pressable>
-  
       </View>
     </ScrollView>
     );
@@ -349,9 +344,9 @@ function TelaHistDoacoes() {
           <View>
             <Text style={styles.titleHomeHistDoacao}>REGISTRO DE DOAÇÕES</Text>
             <View >
-              {data.map((info) => 
+              {formList?.map((info) => 
               <HistoricCard
-              nameInstitution={info.nameInstitution}
+              nameInstitution={info.institution.name}
               value={info.value}
               id={info.id}
               nomeTela="EdicaoDoacao"

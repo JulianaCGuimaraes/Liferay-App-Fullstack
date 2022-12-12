@@ -17,7 +17,7 @@ function HomeScreen(){
         </TouchableOpacity>
 
         <DoacaoGrafico />
-        <AtividadeGrafico />
+        {/* <AtividadeGrafico /> */}
     </View>
   </ScrollView>
   );

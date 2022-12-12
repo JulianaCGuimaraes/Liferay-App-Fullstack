@@ -9,7 +9,7 @@ function HistoricCard(props) {
 
         const editButton = () => {
             console.warn('Wow, Much Edit');
-            navigation.navigate(props.nomeTela);
+            navigation.navigate(props.nomeTela, {id: props.id});
         }
 
         const deleteButton = () => {

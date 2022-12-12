@@ -42,7 +42,7 @@ function ProgressBar(props){
           <Text style={labelStyles}></Text>
         </View>
         <View style={valorContainerStyles}>
-          <Text style={valorStyles}>R$ 150.00 / R$300.00</Text>
+          <Text style={valorStyles}>{props.amount} / R$2000.00</Text>
         </View>
     </View>
   );
